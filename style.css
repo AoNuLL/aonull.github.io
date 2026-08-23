@@ -4,8 +4,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   background: #fff;
   color: #333;
+  line-height: 1.6;
 }
 
+/* 导航 */
 .nav {
   height: 56px;
   display: flex;
@@ -13,6 +15,18 @@ body {
   justify-content: space-between;
   padding: 0 16px;
   border-bottom: 1px solid #eee;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.menu, .search {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #222;
 }
 
 .brand {
@@ -23,28 +37,61 @@ body {
   font-weight: 600;
 }
 
-.menu, .search {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
+.brand-icon {
+  font-size: 22px;
+  font-weight: 800;
 }
 
-/* 轮播区域 - 简化版，确保图片显示 */
+/* 轮播 */
 .slider {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #111;
 }
 
+.slides {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
 .slide {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  opacity: 0;
+  transition: opacity .6s ease;
 }
 
+.slide.active {
+  opacity: 1;
+}
+
+.dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.5);
+}
+
+.dot.active {
+  background: #fff;
+}
+
+/* 数据卡片 */
 .stats {
   margin: 18px 16px;
   background: #0b1f7a;
@@ -55,16 +102,19 @@ body {
   justify-content: space-around;
   padding: 22px 8px;
   text-align: center;
+  box-shadow: 0 6px 18px rgba(11,31,122,.18);
 }
 
 .stat .num {
   font-size: 36px;
   font-weight: 700;
+  line-height: 1.1;
 }
 
 .stat .label {
   font-size: 16px;
   margin-top: 6px;
+  opacity: .95;
 }
 
 .divider {
@@ -73,6 +123,7 @@ body {
   background: rgba(255,255,255,.35);
 }
 
+/* 正文 */
 .content {
   padding: 20px 22px 40px;
 }
@@ -81,9 +132,17 @@ body {
   font-size: 24px;
   font-weight: 800;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .desc {
   font-size: 17px;
   color: #555;
+}
+
+/* 桌面端居中 */
+@media (min-width: 768px) {
+  body { max-width: 768px; margin: 0 auto; }
+  .stats { max-width: 720px; margin: 24px auto; }
+  .content { max-width: 720px; margin: 0 auto; }
 }
