@@ -3,39 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proud Sharky</title>
+  <title>AoNuLL</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- 测试：这张图应该无条件显示 -->
+  <img src="images/slide1.jpg" alt="test" style="width:100%;max-width:400px;display:block;margin:20px auto;border:3px solid red;">
+
   <header class="nav">
-    <button class="menu" aria-label="菜单">☰</button>
+    <button class="menu">☰</button>
     <div class="brand">
       <span class="brand-icon">A</span>
-      <span class="brand-name">Proud Sharky</span>
+      <span class="brand-name">AoNuLL</span>
     </div>
-    <button class="search" aria-label="搜索">🔎</button>
+    <button class="search">🔍</button>
   </header>
 
   <section class="slider">
-    <div class="slides">
-      <div class="slide active">
-        <img src="images/slide1.jpg" alt="slide1" />
-        <div class="overlay-logo">
-          <!-- 这里可以换成你自己的 logo 图片 -->
-          <svg viewBox="0 0 200 120" class="big-logo" aria-hidden="true">
-            <polygon points="20,10 90,60 20,110 60,110 130,60 60,10" fill="#000"/>
-            <polygon points="180,10 110,60 180,110 140,110 70,60 140,10" fill="#000"/>
-          </svg>
-        </div>
-      </div>
-      <div class="slide">
-        <img src="images/slide2.jpg" alt="slide2" />
-      </div>
-    </div>
-    <div class="dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-    </div>
+    <img class="slide active" src="images/slide1.jpg" alt="slide1">
   </section>
 
   <section class="stats">
@@ -56,27 +42,9 @@
   </section>
 
   <main class="content">
-    <h1 class="title">行业优秀的企业管理软件</h1>
-    <p class="desc">
-      公司提供iPhone(iOS)、Android、Web全方位的外包服务，致力于为各企业单位提供升级转型、管理优化的信息技术化方案，为个人提供一站式的产品设计与技术开发的外包服务。
-    </p>
-
-    <img class="bottom-img" src="images/helmet.jpg" alt="产品图" />
+    <h1 class="title">你的标题</h1>
+    <p class="desc">你的介绍文字</p>
   </main>
 
-  <script>
-    // 简单轮播
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    let index = 0;
-    setInterval(() => {
-      slides[index].classList.remove('active');
-      dots[index].classList.remove('active');
-      index = (index + 1) % slides.length;
-      slides[index].classList.add('active');
-      dots[index].classList.add('active');
-    }, 3500);
-  </script>
 </body>
 </html>
-
