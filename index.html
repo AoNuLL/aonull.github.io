@@ -8,22 +8,30 @@
 </head>
 <body>
 
-  <!-- 测试：这张图应该无条件显示 -->
-  <img src="images/slide1.jpg" alt="test" style="width:100%;max-width:400px;display:block;margin:20px auto;border:3px solid red;">
-
+  <!-- 顶部导航 -->
   <header class="nav">
-    <button class="menu">☰</button>
+    <button class="menu" aria-label="菜单">☰</button>
     <div class="brand">
       <span class="brand-icon">A</span>
       <span class="brand-name">AoNuLL</span>
     </div>
-    <button class="search">🔍</button>
+    <button class="search" aria-label="搜索">🔍</button>
   </header>
 
+  <!-- 轮播图 -->
   <section class="slider">
-    <img class="slide active" src="images/slide1.jpg" alt="slide1">
+    <div class="slides">
+      <img class="slide active" src="images/slide1.jpg" alt="slide1">
+      <!-- 以后有第二张图再取消注释下面这行 -->
+      <!-- <img class="slide" src="images/slide2.jpg" alt="slide2"> -->
+    </div>
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+    </div>
   </section>
 
+  <!-- 蓝色数据卡片 -->
   <section class="stats">
     <div class="stat">
       <div class="num">12</div>
@@ -41,9 +49,10 @@
     </div>
   </section>
 
+  <!-- 正文内容 -->
   <main class="content">
     <h1 class="title">你的标题</h1>
-    <p class="desc">你的介绍文字</p>
+    <p class="desc">你的介绍文字写在这里</p>
   </main>
 
 </body>
