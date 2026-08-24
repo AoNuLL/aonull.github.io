@@ -59,7 +59,7 @@ img {
 }
 
 .menu a {
-  color: #9a9aa2;
+  color: #d2d2d9;
   transition: color 0.2s;
 }
 
@@ -113,7 +113,7 @@ img {
   display: block;
   padding: 10px 14px;
   border-radius: 8px;
-  color: #9a9aa2;
+  color: #d2d2d9;
   font-size: 14px;
   transition: background 0.2s, color 0.2s;
 }
@@ -155,7 +155,7 @@ img {
 }
 
 .hero .sub {
-  color: #9a9aa2;
+  color: #d2d2d9;
   font-size: clamp(15px, 2.4vw, 18px);
   margin-bottom: 32px;
 }
@@ -188,7 +188,7 @@ img {
 }
 
 .section > p {
-  color: #9a9aa2;
+  color: #d2d2d9;
 }
 
 /* 作品卡片 */
@@ -229,7 +229,7 @@ img {
 
 .card figcaption p {
   font-size: 13px;
-  color: #9a9aa2;
+  color: #d2d2d9;
 }
 
 /* 联系方式 */
@@ -256,7 +256,7 @@ img {
   flex-shrink: 0;
   min-width: 56px;
   font-size: 13px;
-  color: #9a9aa2;
+  color: #d2d2d9;
   padding-right: 12px;
   border-right: 1px solid #26262b;
 }
@@ -278,7 +278,7 @@ img {
 .footer {
   text-align: center;
   padding: 24px;
-  color: #666;
+  color: #8a8a92;
   font-size: 14px;
   border-top: 1px solid #1c1c20;
 }
