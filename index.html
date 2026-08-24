@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AoNuLL</title>
+<style>
+/* ===== 全部 CSS 直接写在 HTML 里，避免文件引用问题 ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+/* 导航 */
+.nav {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+.nav button {
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+.brand { font-size: 20px; font-weight: 700; }
+
+/* 侧边菜单 - 关键：默认隐藏 */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100%;
+  background: #fff;
+  z-index: 50;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  /* 隐藏方式：移出屏幕 */
+  left: -260px;
+  transition: left 0.3s ease;
+}
+.side-menu.open {
+  left: 0;
+}
+
+.side-menu-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid #eee;
+  font-weight: 700;
+  font-size: 18px;
+}
+.side-menu-header button {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+.menu-item {
+  padding: 18px 20px;
+  border-bottom: 1px solid #f2f2f2;
+  cursor: pointer;
+  font-size: 16px;
+}
+.menu-item:hover { background: #f7f7f7; }
+
+/* 遮罩 */
+.menu-mask {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: 40;
+  display: none;
+}
+.menu-mask.show { display: block; }
+
+/* 弹窗 */
+.modal-mask {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 60;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.modal-mask.show {
+  display: flex;
+}
+.modal {
+  background: #fff;
+  border-radius: 14px;
+  width: 85%;
+  max-width: 360px;
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  font-weight: 700;
+  font-size: 18px;
+}
+.modal-header button {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+.modal-body {
+  padding: 20px;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* 轮播 */
+.slider {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #111;
+}
+.slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 数据卡片 */
+.stats {
+  margin: 18px 16px;
+  background: #0b1f7a;
+  border-radius: 14px;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  padding: 22px 8px;
+  text-align: center;
+}
+.stats .num { font-size: 36px; font-weight: 700; }
+.stats .label { font-size: 16px; margin-top: 4px; }
+.stats .divider { width: 1px; background: rgba(255,255,255,0.35); }
+
+/* 正文 */
+.content { padding: 20px 22px 40px; }
+.content h1 { font-size: 24px; font-weight: 800; margin-bottom: 14px; }
+.content p { font-size: 17px; color: #555; }
+
+@media (min-width: 768px) {
+  body { max-width: 768px; margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- 侧边菜单 -->
+<div class="side-menu" id="sideMenu">
+  <div class="side-menu-header">
+    <span>菜单</span>
+    <button onclick="closeMenu()">✕</button>
+  </div>
+  <div class="menu-item" onclick="openModal('about')">📄 关于</div>
+  <div class="menu-item" onclick="openModal('group')">💬 交流群</div>
+  <div class="menu-item" onclick="openModal('profile')">👤 个人信息</div>
+</div>
+
+<!-- 遮罩 -->
+<div class="menu-mask" id="menuMask" onclick="closeMenu()"></div>
+
+<!-- 弹窗们 -->
+<div class="modal-mask" id="modalAbout">
+  <div class="modal">
+    <div class="modal-header"><span>关于</span><button onclick="closeModals()">✕</button></div>
+    <div class="modal-body">这里写关于你的介绍</div>
+  </div>
+</div>
+<div class="modal-mask" id="modalGroup">
+  <div class="modal">
+    <div class="modal-header"><span>交流群</span><button onclick="closeModals()">✕</button></div>
+    <div class="modal-body">QQ群：123456789</div>
+  </div>
+</div>
+<div class="modal-mask" id="modalProfile">
+  <div class="modal">
+    <div class="modal-header"><span>个人信息</span><button onclick="closeModals()">✕</button></div>
+    <div class="modal-body">昵称：AoNuLL<br>邮箱：your@email.com</div>
+  </div>
+</div>
+
+<!-- 页面内容 -->
+<header class="nav">
+  <button onclick="openMenu()">☰</button>
+  <div class="brand">AoNuLL</div>
+  <button>🔍</button>
+</header>
+
+<section class="slider">
+  <img src="images/slide1.jpg" alt="slide1">
+</section>
+
+<section class="stats">
+  <div>
+    <div class="num">12</div>
+    <div class="label">年开发经验</div>
+  </div>
+  <div class="divider"></div>
+  <div>
+    <div class="num">6</div>
+    <div class="label">人开发团队</div>
+  </div>
+  <div class="divider"></div>
+  <div>
+    <div class="num">96</div>
+    <div class="label">个成功项目</div>
+  </div>
+</section>
+
+<main class="content">
+  <h1>你的标题</h1>
+  <p>介绍文字写在这里</p>
+</main>
+
+<script>
+function openMenu() {
+  document.getElementById('sideMenu').classList.add('open');
+  document.getElementById('menuMask').classList.add('show');
+}
+function closeMenu() {
+  document.getElementById('sideMenu').classList.remove('open');
+  document.getElementById('menuMask').classList.remove('show');
+}
+function openModal(name) {
+  closeMenu();
+  document.getElementById('modal' + name.charAt(0).toUpperCase() + name.slice(1)).classList.add('show');
+}
+function closeModals() {
+  document.querySelectorAll('.modal-mask').forEach(m => m.classList.remove('show'));
+}
+</script>
+
+</body>
+</html>
