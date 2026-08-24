@@ -32,28 +32,47 @@
     </aside>
 
     <main class="content">
-      <section id="home" class="hero">
-        <div class="hero-inner">
-          <p class="tag">PERSONAL SITE</p>
-          <h1>你好，我是 AoNuLL</h1>
-          <p class="sub">记录灵感、作品与成长的空间，欢迎来到这里。</p>
-          <a href="#works" class="btn">浏览作品</a>
+      <section id="home" class="carousel">
+        <div class="slides">
+          <div class="slide active" style="background-image: url('images/slide1.jpg')">
+            <div class="slide-content">
+              <p class="tag">PERSONAL SITE</p>
+              <h1>你好，我是 AoNuLL</h1>
+              <p class="sub">记录灵感、作品与成长的空间，欢迎来到这里。</p>
+              <a href="#works" class="btn">浏览作品</a>
+            </div>
+          </div>
+          <div class="slide" style="background-image: url('images/slide2.jpg')">
+            <div class="slide-content">
+              <p class="tag">MY GALLERY</p>
+              <h1>作品与灵感</h1>
+              <p class="sub">用作品讲述故事，用灵感点亮世界。</p>
+              <a href="#works" class="btn">浏览作品</a>
+            </div>
+          </div>
         </div>
-        <div class="stats">
-          <div class="stat-card">
-            <span class="stat-num">5</span>
-            <span class="stat-label">年开发经验</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">10</span>
-            <span class="stat-label">人开发团队</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">20</span>
-            <span class="stat-label">个成功项目</span>
-          </div>
+        <button class="carousel-arrow prev" aria-label="上一张">&#10094;</button>
+        <button class="carousel-arrow next" aria-label="下一张">&#10095;</button>
+        <div class="dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
         </div>
       </section>
+
+      <div class="stats">
+        <div class="stat-card">
+          <span class="stat-num">5</span>
+          <span class="stat-label">年开发经验</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">10</span>
+          <span class="stat-label">人开发团队</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">20</span>
+          <span class="stat-label">个成功项目</span>
+        </div>
+      </div>
 
       <section id="works" class="section">
         <h2>作品展示</h2>
@@ -140,6 +159,32 @@
 
     overlay.addEventListener('click', closeMenu);
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.carousel-arrow.prev');
+    const nextBtn = document.querySelector('.carousel-arrow.next');
+    let current = 0;
+    let timer = null;
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle('active', i === current));
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    function nextSlide() { goTo(current + 1); }
+
+    function restart() {
+      clearInterval(timer);
+      timer = setInterval(nextSlide, 4000);
+    }
+
+    prevBtn.addEventListener('click', () => { goTo(current - 1); restart(); });
+    nextBtn.addEventListener('click', () => { goTo(current + 1); restart(); });
+    dots.forEach((d, i) => d.addEventListener('click', () => { goTo(i); restart(); }));
+
+    restart();
   </script>
 </body>
 </html>
