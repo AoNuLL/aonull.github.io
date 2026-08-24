@@ -8,97 +8,153 @@
 </head>
 <body>
 
-  <header class="nav">
-    <button class="menu" aria-label="菜单">☰</button>
-    <div class="brand">AoNuLL</div>
-    <button class="search" aria-label="搜索">🔍</button>
-  </header>
+  <!-- 侧边菜单遮罩 -->
+  <div class="menu-mask" id="menuMask"></div>
 
-  <main class="page">
-
-    <section class="hero">
-      <img class="hero-img" src="images/slide1.jpg" alt="AoNuLL" />
-      <button class="cta">立即定制</button>
-    </section>
-
-    <section class="service-intro">
-      <h1 class="section-title">定制软件服务</h1>
-      <p class="section-desc">
-        不限于以上服务更多需求，请联系我们，专业团队为您服务
-      </p>
-    </section>
-
-    <section class="services">
-
-      <div class="service-item">
-        <div class="service-icon icon-crm">CRM</div>
-        <div class="service-text">
-          <h2>CRM系统</h2>
-          <p>CRM系统功能：客户资源管理、财务管理、项目管理、合同管理、供应链功能行政OA。</p>
-        </div>
-      </div>
-
-      <div class="service-item">
-        <div class="service-icon icon-erp">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-            <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm9 4a9 9 0 1 0-3.2 6.9l1.5 1.5a1 1 0 0 0 1.4-1.4l-1.5-1.5A9 9 0 0 0 21 12Z"/>
-          </svg>
-        </div>
-        <div class="service-text">
-          <h2>ERP系统</h2>
-          <p>ERP系统主要功能有：客情管理客户资源管理、项目管理、财务管理行政OA等功能。</p>
-        </div>
-      </div>
-
-      <div class="service-item">
-        <div class="service-icon icon-shop">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-            <path d="M12 3 4 8v6c0 5 3.5 8 8 8s8-3 8-8V8l-8-5Zm0 2.2L18 9v5c0 4-2.8 6.5-6 6.5S6 18 6 14V9l6-3.8Z"/>
-          </svg>
-        </div>
-        <div class="service-text">
-          <h2>商城分销</h2>
-          <p>商城分销系统功能：商品管理、商品入驻商品管理、三级分销、积分营销、一键分享等功能。</p>
-        </div>
-      </div>
-
-    </section>
-
-    <section class="resource">
-      <div class="resource-card">
-        <img src="images/slide2.jpg" alt="资源图" />
-      </div>
-      <div class="resource-title">
-        <span class="blue-bar"></span> 资源下载
-      </div>
-      <div class="empty">没有添加文件</div>
-    </section>
-
-    <section class="empty-product">
-      没有选择产品
-    </section>
-
-    <footer class="footer">
-      <p>©2026 版权所有</p>
-      <p class="support">AoNuLL 提供技术支持 | 举报</p>
-    </footer>
-
-  </main>
-
-  <nav class="bottom-nav">
-    <a href="#" class="active">
-      <span>🏠</span>
-      <small>关于我们</small>
-    </a>
-    <a href="#">
-      <span>🛠</span>
-      <small>解决方案</small>
-    </a>
-    <a href="#">
-      <span>📰</span>
-      <small>新闻动态</small>
-    </a>
+  <!-- 侧边菜单 -->
+  <nav class="side-menu" id="sideMenu">
+    <div class="menu-header">
+      <span class="menu-title">菜单</span>
+      <button class="menu-close" id="menuClose">✕</button>
+    </div>
+    <div class="menu-user">
+      <div class="menu-avatar">A</div>
+      <div class="menu-username">AoNuLL</div>
+    </div>
+    <ul class="menu-list">
+      <li class="menu-item" onclick="openPage('about')">
+        <span class="menu-icon">📄</span>
+        <span>关于</span>
+      </li>
+      <li class="menu-item" onclick="openPage('group')">
+        <span class="menu-icon">💬</span>
+        <span>交流群</span>
+      </li>
+      <li class="menu-item" onclick="openPage('profile')">
+        <span class="menu-icon">👤</span>
+        <span>个人信息</span>
+      </li>
+    </ul>
   </nav>
 
+  <!-- 顶部导航 -->
+  <header class="nav">
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <div class="brand">
+      <span class="brand-icon">A</span>
+      <span class="brand-name">AoNuLL</span>
+    </div>
+    <button class="search-btn">🔍</button>
+  </header>
+
+  <!-- 轮播图 -->
+  <section class="slider">
+    <div class="slides">
+      <img class="slide active" src="images/slide1.jpg" alt="slide1">
+    </div>
+    <div class="dots">
+      <span class="dot active"></span>
+    </div>
+  </section>
+
+  <!-- 蓝色数据卡片 -->
+  <section class="stats">
+    <div class="stat">
+      <div class="num">12</div>
+      <div class="label">年开发经验</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <div class="num">6</div>
+      <div class="label">人开发团队</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <div class="num">96</div>
+      <div class="label">个成功项目</div>
+    </div>
+  </section>
+
+  <!-- 正文内容 -->
+  <main class="content">
+    <h1 class="title">你的标题</h1>
+    <p class="desc">你的介绍文字写在这里</p>
+  </main>
+
+  <!-- 弹窗：关于 -->
+  <div class="modal-mask" id="modalAbout">
+    <div class="modal">
+      <div class="modal-header">
+        <span>关于</span>
+        <button class="modal-close" onclick="closeModal('modalAbout')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>这里写关于你的介绍，比如网站用途、你的背景等。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 弹窗：交流群 -->
+  <div class="modal-mask" id="modalGroup">
+    <div class="modal">
+      <div class="modal-header">
+        <span>交流群</span>
+        <button class="modal-close" onclick="closeModal('modalGroup')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>QQ群：123456789</p>
+        <p>微信群：扫码添加好友备注"进群"</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 弹窗：个人信息 -->
+  <div class="modal-mask" id="modalProfile">
+    <div class="modal">
+      <div class="modal-header">
+        <span>个人信息</span>
+        <button class="modal-close" onclick="closeModal('modalProfile')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>昵称：AoNuLL</p>
+        <p>邮箱：your@email.com</p>
+        <p>简介：全栈开发者，热爱开源</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 菜单开关
+    const sideMenu = document.getElementById('sideMenu');
+    const menuMask = document.getElementById('menuMask');
+
+    document.getElementById('menuBtn').onclick = () => {
+      sideMenu.classList.add('open');
+      menuMask.classList.add('show');
+    };
+
+    document.getElementById('menuClose').onclick = closeMenu;
+    menuMask.onclick = closeMenu;
+
+    function closeMenu() {
+      sideMenu.classList.remove('open');
+      menuMask.classList.remove('show');
+    }
+
+    // 弹窗
+    function openPage(page) {
+      closeMenu();
+      const map = {
+        'about': 'modalAbout',
+        'group': 'modalGroup',
+        'profile': 'modalProfile'
+      };
+      document.getElementById(map[page]).classList.add('show');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('show');
+    }
+  </script>
 </body>
 </html>
