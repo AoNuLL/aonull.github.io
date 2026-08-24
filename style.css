@@ -270,6 +270,10 @@ img {
   color: #fff;
 }
 
+.contact-list li > span:last-child:not(.contact-label) {
+  color: #e8e8ea;
+}
+
 /* 页脚 */
 .footer {
   text-align: center;
