@@ -10,9 +10,10 @@ html {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-  color: #333;
-  background: #fff;
+  background: #0d0d0f;
+  color: #e8e8ea;
   line-height: 1.6;
+  min-height: 100vh;
 }
 
 a {
@@ -20,69 +21,150 @@ a {
   text-decoration: none;
 }
 
-/* 导航栏 */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* 顶部导航 */
 .nav {
   position: sticky;
   top: 0;
-  z-index: 30;
+  z-index: 40;
   height: 56px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 32px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid #eee;
+  gap: 16px;
+  padding: 0 20px;
+  background: rgba(13, 13, 15, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #26262b;
 }
 
 .brand {
   font-size: 20px;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #b06cf5, #e86c9a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .menu {
   display: flex;
   gap: 24px;
+  margin-left: auto;
   font-size: 15px;
 }
 
 .menu a {
-  color: #666;
+  color: #9a9aa2;
   transition: color 0.2s;
 }
 
 .menu a:hover {
-  color: #1a73e8;
+  color: #fff;
+}
+
+/* 汉堡按钮 */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.menu-toggle span {
+  width: 22px;
+  height: 2px;
+  background: #e8e8ea;
+  border-radius: 2px;
+  transition: transform 0.2s;
+}
+
+/* 布局 */
+.layout {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 侧边栏 */
+.sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  padding: 40px 16px;
+  border-right: 1px solid #1c1c20;
+}
+
+.side-menu {
+  position: sticky;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.side-menu a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #9a9aa2;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.side-menu a:hover {
+  background: #1a1a1f;
+  color: #fff;
+}
+
+.side-menu a.active {
+  background: linear-gradient(135deg, rgba(176, 108, 245, 0.18), rgba(232, 108, 154, 0.18));
+  color: #d9a8ff;
+}
+
+/* 主内容 */
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 0 32px 40px;
 }
 
 /* Hero */
 .hero {
-  min-height: 72vh;
+  min-height: 62vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(135deg, #1a73e8 0%, #6a5acd 100%);
-  color: #fff;
+}
+
+.tag {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #b06cf5;
+  margin-bottom: 16px;
 }
 
 .hero h1 {
-  font-size: clamp(28px, 5vw, 48px);
+  font-size: clamp(28px, 5vw, 44px);
   margin-bottom: 12px;
 }
 
-.hero p {
-  font-size: clamp(16px, 2.5vw, 20px);
-  opacity: 0.9;
+.hero .sub {
+  color: #9a9aa2;
+  font-size: clamp(15px, 2.4vw, 18px);
   margin-bottom: 32px;
 }
 
 .btn {
   display: inline-block;
   padding: 12px 28px;
-  background: #fff;
-  color: #1a73e8;
+  background: linear-gradient(135deg, #b06cf5, #e86c9a);
+  color: #fff;
   border-radius: 999px;
   font-weight: 600;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -90,93 +172,133 @@ a {
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(176, 108, 245, 0.35);
 }
 
 /* Section */
 .section {
-  padding: 72px 32px;
-  max-width: 1000px;
-  margin: 0 auto;
+  padding: 56px 0;
 }
 
 .section h2 {
-  font-size: 28px;
-  margin-bottom: 32px;
-  text-align: center;
-}
-
-.section.alt {
-  background: #f7f8fa;
-  max-width: none;
-}
-
-.section.alt p {
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;
-  color: #666;
+  font-size: 24px;
+  margin-bottom: 24px;
+  padding-left: 12px;
+  border-left: 3px solid #b06cf5;
 }
 
 .section > p {
-  text-align: center;
-  color: #666;
+  color: #9a9aa2;
 }
 
-/* Gallery grid */
+/* 作品卡片 */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
 }
 
 .card {
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: #151519;
+  border: 1px solid #26262b;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border-color: #b06cf5;
+  box-shadow: 0 12px 32px rgba(176, 108, 245, 0.18);
 }
 
-.card img {
+.card-media img {
   width: 100%;
-  height: 240px;
+  height: 200px;
   object-fit: cover;
-  display: block;
 }
 
 .card figcaption {
-  padding: 12px 16px;
-  font-size: 14px;
-  color: #555;
-  border-top: 1px solid #f0f0f0;
+  padding: 14px 16px;
 }
 
-/* Footer */
+.card figcaption h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.card figcaption p {
+  font-size: 13px;
+  color: #9a9aa2;
+}
+
+/* 页脚 */
 .footer {
   text-align: center;
   padding: 24px;
-  color: #999;
+  color: #666;
   font-size: 14px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #1c1c20;
 }
 
-@media (max-width: 640px) {
-  .nav {
-    padding: 0 16px;
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 45;
+}
+
+/* 响应式 */
+@media (max-width: 860px) {
+  .menu-toggle {
+    display: flex;
   }
 
   .menu {
-    gap: 16px;
-    font-size: 14px;
+    display: none;
+    position: fixed;
+    top: 56px;
+    right: 0;
+    bottom: 0;
+    width: 240px;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 16px;
+    background: #151519;
+    border-left: 1px solid #26262b;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.4);
+    z-index: 50;
   }
 
-  .section {
-    padding: 48px 16px;
+  .menu.open {
+    display: flex;
+  }
+
+  .menu a {
+    padding: 14px;
+    border-radius: 8px;
+  }
+
+  .menu a:hover {
+    background: #1a1a1f;
+    color: #fff;
+  }
+
+  .overlay.show {
+    display: block;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .content {
+    padding: 0 20px 40px;
+  }
+
+  .hero {
+    min-height: 50vh;
   }
 }
