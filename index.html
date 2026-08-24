@@ -8,46 +8,77 @@
 </head>
 <body>
 
-  <!-- 侧边菜单遮罩 -->
-  <div class="menu-mask" id="menuMask"></div>
-
   <!-- 侧边菜单 -->
-  <nav class="side-menu" id="sideMenu">
-    <div class="menu-header">
-      <span class="menu-title">菜单</span>
-      <button class="menu-close" id="menuClose">✕</button>
+  <div class="side-menu" id="sideMenu">
+    <div class="side-menu-header">
+      <span>AoNuLL</span>
+      <button class="side-close" onclick="closeMenu()">✕</button>
     </div>
-    <div class="menu-user">
-      <div class="menu-avatar">A</div>
-      <div class="menu-username">AoNuLL</div>
+    <div class="menu-item" onclick="openModal('about')">
+      <span class="menu-icon">ℹ️</span><span>关于</span>
     </div>
-    <ul class="menu-list">
-      <li class="menu-item" onclick="openPage('about')">
-        <span class="menu-icon">📄</span>
-        <span>关于</span>
-      </li>
-      <li class="menu-item" onclick="openPage('group')">
-        <span class="menu-icon">💬</span>
-        <span>交流群</span>
-      </li>
-      <li class="menu-item" onclick="openPage('profile')">
-        <span class="menu-icon">👤</span>
-        <span>个人信息</span>
-      </li>
-    </ul>
-  </nav>
+    <div class="menu-item" onclick="openModal('group')">
+      <span class="menu-icon">💬</span><span>交流群</span>
+    </div>
+    <div class="menu-item" onclick="openModal('profile')">
+      <span class="menu-icon">👤</span><span>个人信息</span>
+    </div>
+  </div>
 
-  <!-- 顶部导航 -->
+  <!-- 菜单遮罩 -->
+  <div class="menu-mask" id="menuMask" onclick="closeMenu()"></div>
+
+  <!-- 弹窗：关于 -->
+  <div class="modal-mask" id="modalAbout">
+    <div class="modal">
+      <div class="modal-header">
+        <span>关于</span>
+        <button class="modal-close" onclick="closeAllModals()">✕</button>
+      </div>
+      <div class="modal-body">
+        AoNuLL 的个人/项目展示页。这里可以写关于你的介绍，比如网站用途、你的背景。
+      </div>
+    </div>
+  </div>
+
+  <!-- 弹窗：交流群 -->
+  <div class="modal-mask" id="modalGroup">
+    <div class="modal">
+      <div class="modal-header">
+        <span>交流群</span>
+        <button class="modal-close" onclick="closeAllModals()">✕</button>
+      </div>
+      <div class="modal-body">
+        QQ群：123456789<br/>
+        或：扫码/添加好友备注“进群”
+      </div>
+    </div>
+  </div>
+
+  <!-- 弹窗：个人信息 -->
+  <div class="modal-mask" id="modalProfile">
+    <div class="modal">
+      <div class="modal-header">
+        <span>个人信息</span>
+        <button class="modal-close" onclick="closeAllModals()">✕</button>
+      </div>
+      <div class="modal-body">
+        昵称：AoNuLL<br/>
+        邮箱：your@email.com<br/>
+        简介：全栈开发者，热爱开源。
+      </div>
+    </div>
+  </div>
+
   <header class="nav">
-    <button class="menu-btn" id="menuBtn">☰</button>
+    <button class="menu" onclick="openMenu()">☰</button>
     <div class="brand">
       <span class="brand-icon">A</span>
       <span class="brand-name">AoNuLL</span>
     </div>
-    <button class="search-btn">🔍</button>
+    <button class="search">🔍</button>
   </header>
 
-  <!-- 轮播图 -->
   <section class="slider">
     <div class="slides">
       <img class="slide active" src="images/slide1.jpg" alt="slide1">
@@ -57,7 +88,6 @@
     </div>
   </section>
 
-  <!-- 蓝色数据卡片 -->
   <section class="stats">
     <div class="stat">
       <div class="num">12</div>
@@ -75,86 +105,35 @@
     </div>
   </section>
 
-  <!-- 正文内容 -->
   <main class="content">
     <h1 class="title">你的标题</h1>
-    <p class="desc">你的介绍文字写在这里</p>
+    <p class="desc">介绍文字写在这里</p>
   </main>
 
-  <!-- 弹窗：关于 -->
-  <div class="modal-mask" id="modalAbout">
-    <div class="modal">
-      <div class="modal-header">
-        <span>关于</span>
-        <button class="modal-close" onclick="closeModal('modalAbout')">✕</button>
-      </div>
-      <div class="modal-body">
-        <p>这里写关于你的介绍，比如网站用途、你的背景等。</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- 弹窗：交流群 -->
-  <div class="modal-mask" id="modalGroup">
-    <div class="modal">
-      <div class="modal-header">
-        <span>交流群</span>
-        <button class="modal-close" onclick="closeModal('modalGroup')">✕</button>
-      </div>
-      <div class="modal-body">
-        <p>QQ群：123456789</p>
-        <p>微信群：扫码添加好友备注"进群"</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- 弹窗：个人信息 -->
-  <div class="modal-mask" id="modalProfile">
-    <div class="modal">
-      <div class="modal-header">
-        <span>个人信息</span>
-        <button class="modal-close" onclick="closeModal('modalProfile')">✕</button>
-      </div>
-      <div class="modal-body">
-        <p>昵称：AoNuLL</p>
-        <p>邮箱：your@email.com</p>
-        <p>简介：全栈开发者，热爱开源</p>
-      </div>
-    </div>
-  </div>
-
   <script>
-    // 菜单开关
-    const sideMenu = document.getElementById('sideMenu');
-    const menuMask = document.getElementById('menuMask');
-
-    document.getElementById('menuBtn').onclick = () => {
-      sideMenu.classList.add('open');
-      menuMask.classList.add('show');
-    };
-
-    document.getElementById('menuClose').onclick = closeMenu;
-    menuMask.onclick = closeMenu;
+    function openMenu() {
+      document.getElementById('sideMenu').classList.add('show');
+      document.getElementById('menuMask').classList.add('show');
+    }
 
     function closeMenu() {
-      sideMenu.classList.remove('open');
-      menuMask.classList.remove('show');
+      document.getElementById('sideMenu').classList.remove('show');
+      document.getElementById('menuMask').classList.remove('show');
     }
 
-    // 弹窗
-    function openPage(page) {
+    function openModal(name) {
       closeMenu();
-      const map = {
-        'about': 'modalAbout',
-        'group': 'modalGroup',
-        'profile': 'modalProfile'
-      };
-      document.getElementById(map[page]).classList.add('show');
+      if (name === 'about') document.getElementById('modalAbout').classList.add('show');
+      if (name === 'group') document.getElementById('modalGroup').classList.add('show');
+      if (name === 'profile') document.getElementById('modalProfile').classList.add('show');
     }
 
-    function closeModal(id) {
-      document.getElementById(id).classList.remove('show');
+    function closeAllModals() {
+      document.getElementById('modalAbout').classList.remove('show');
+      document.getElementById('modalGroup').classList.remove('show');
+      document.getElementById('modalProfile').classList.remove('show');
     }
   </script>
+
 </body>
 </html>
