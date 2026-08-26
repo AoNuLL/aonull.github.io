@@ -160,25 +160,18 @@ img {
   display: block;
 }
 
-.slide::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(13, 13, 15, 0.45);
-  z-index: 1;
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .slide-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
   text-align: center;
-  color: #fff;
-  padding: 0 24px;
-  width: 100%;
+  color: #e8e8ea;
+  padding: 32px 24px;
   max-width: 720px;
+  margin: 0 auto;
 }
 
 .slide-content .tag {
@@ -194,19 +187,16 @@ img {
 }
 
 .slide-content .sub {
-  color: rgba(255, 255, 255, 0.85);
+  color: #d2d2d9;
   font-size: clamp(15px, 2.4vw, 18px);
   margin-bottom: 32px;
 }
 
 .dots {
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
   display: flex;
+  justify-content: center;
   gap: 10px;
+  padding: 0 0 32px;
 }
 
 .dot {
@@ -221,13 +211,6 @@ img {
 .dot.active {
   background: #b06cf5;
   transform: scale(1.3);
-}
-
-.tag {
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: #b06cf5;
-  margin-bottom: 16px;
 }
 
 .btn {
